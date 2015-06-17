@@ -1,0 +1,80 @@
+plugins {
+  id "net.saliman.cobertura" version "2.2.8"
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+// To use Eclipse
+apply plugin: 'eclipse-wtp'
+//Static analysis Tools
+apply plugin: 'pmd'
+//apply plugin: 'findbugs'
+//apply plugin: 'checkstyle'
+//apply plugin: "sonar-runner"
+
+group = 'com.jsomiset'
+version = '1.0.0-SNAPSHOT'
+description = 'Rest Sample project'
+ 
+// Uses JDK 8
+// sourceCompatibility = 1.8
+// targetCompatibility = 1.8
+ 
+// 1. Get dependencies from Maven local repository
+// 2. Get dependencies from Maven central repository
+repositories {
+	//mavenLocal()
+    mavenCentral()
+}
+// Move all constants to one place TODO
+//Project dependencies
+dependencies {
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'	
+	// JUNIT
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // MATCHER
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+    // Mocking
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.+'
+    // Logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+    // BDD Cucumber Java
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.+'
+    // Cucumber Junit
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: '1.+'
+    // Selinium Firefox Driver
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.44.+'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '2.44.+'
+    // JAX_RS SPECIFICATION
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
+	// JERSEY
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.17'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.17'
+    // Grizzly
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-servlet', version: '2.17'
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-http', version: '2.17'
+    // JACKSON JSON Provider
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.17'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-processing', version: '2.17'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: '2.17'
+    // Jersey Server sent Events
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-sse', version: '2.17'
+	// Bean Validation
+	compile group: 'org.glassfish.jersey.ext', name: 'jersey-bean-validation', version: '2.17'
+	// Reactive Jersey Async Client
+	compile group: 'org.glassfish.jersey.ext.rx', name: 'jersey-rx-client', version: '2.17'
+	// Date and Time Util
+	compile group: 'joda-time', name: 'joda-time', version: '2.7'
+    //compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.2'
+    //compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.9.Final'
+    //compile group: 'org.hibernate', name: 'hibernate-annotations', version: '3.5.6-Final'
+	// Utils
+	//testCompile group: 'org.glassfish.jersey.bundles.repackaged', name: 'jersey-guava', version: '2.17' // to code JSON test simpy
+    testCompile group: 'com.google.guava', name: 'guava', version: '18.0' 
+    //testCompile group: 'org.skyscreamer', name: 'jsonassert', version: '1.2.3' // to code JSON test simpy 
+    //compile group: 'javassist', name: 'javassist', version: '3.12.1.GA' // encription capabilities
+	//Encription Util
+    //compile group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
+}
